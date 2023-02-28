@@ -1,0 +1,11 @@
+<h1>AmazeBalls Events</h1>
+
+<div class="container">
+<% @events.each do |event| %>
+  <div class="card">
+    <%= event.name %>
+    <%= event.description %>
+  </div>
+  <br>
+
+</div>
