@@ -1,11 +1,15 @@
 <h1>AmazeBalls Events</h1>
 
 <div class="container">
-<% @events.each do |event| %>
-  <div class="card">
-    <%= event.name %>
-    <%= event.description %>
-  </div>
+  <% if @events.empty? %>
+    <p>There are no events planned.</p>
+  <% else %>
+    <% @events.each do |event| %>
+      <div class="card">
+        <%= event.name %>
+        <%= event.description %>
+      </div>
+    <% end %>
+      <br>
   <% end %>
-  <br>
 </div>
