@@ -51,6 +51,20 @@ class EventsController < ApplicationController
     end
   end
 
+  def rsvp
+    if @event.attendees.include?(current_user)
+      redirect_to @event, notice: "You are already attending this event."
+    else
+      @event.attendees << current_user
+      redirect_to @event, notice: "You're totally going!"
+    end
+  end
+
+  def cancel_rsvp
+    @event.attendees.delete(current_user)
+    redirect_to @event, notice: "You are no longer going to this event."
+  end
+
   private
 
   def set_event

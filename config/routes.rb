@@ -6,7 +6,12 @@ Rails.application.routes.draw do
   root "events#index"
 
   resources :users
-  resources :events
-  resources :rsvps
+  resources :events do
+    member do
+      get 'rsvp'
+      get 'cancel_rsvp'
+    end
+  end
+  
 
 end

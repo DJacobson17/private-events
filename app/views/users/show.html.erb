@@ -1,0 +1,9 @@
+<ul>
+  <% if @user.events.empty? %>
+    <p>User is not hosting</p>
+  <% else %>
+    <% @user.events.each do |event| %>
+      <li><%= event.name %></li>
+    <% end %>
+  <% end %>
+</ul>
