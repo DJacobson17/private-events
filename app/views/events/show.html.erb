@@ -1,14 +1,18 @@
 <div class="container">
   <h2><%= @event.name %></h2>
+  
+  <div class="event_info">
+      
+  </div>
 
   <div class="action">
     <% if current_user == @event.creator %>
       <%= link_to 'Edit', edit_event_path %>
       <%= link_to 'Delete', event_path, data: { turbo_method: :delete } %>
-    <% elsif @event.include?(current_user) %>
+    <% elsif @event.attendees.include?(current_user) %>
       <%= link_to 'Cancel RSVP', cancel_rsvp_event_path %>
     <% else %>
-      <%= link_to 'RSVP', rsvp_event_path unless @event.date < Date.now %>
+      <%= link_to 'RSVP', rsvp_event_path unless @event.date < Time.now %>
     <% end %>
   </div>
   

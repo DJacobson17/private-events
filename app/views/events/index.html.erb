@@ -7,8 +7,9 @@
     <% @events.each do |event| %>
       <div class="card">
         <%= event.name %>
-        <br>
-        <%= event.description %>
+        <%= event.date %>
+        <%= event.location %>
+        <%= link_to 'Learn More', event_path(event) %>
       </div>
     <% end %>
       <br>
