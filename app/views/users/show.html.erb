@@ -1,9 +1,22 @@
+
+<h1>Hosting:</h1>
 <ul>
-  <% if @user.events.empty? %>
-    <p>User is not hosting</p>
+  <% if @user.created_events.empty? %>
+    <p>You are not hosting any events</p>
   <% else %>
-    <% @user.events.each do |event| %>
+    <% @user.created_events.each do |event| %>
       <li><%= event.name %></li>
     <% end %>
   <% end %>
 </ul>
+
+<h1>Attending:</h1>
+<ul>
+  <% if @user.attended_events.empty? %>
+    <p>You are not attending any events</p>
+  <% else %>
+    <% @user.attended_events.each do |event| %>
+      <li><%= event.name %></li>
+    <% end %>
+  <% end %>
+  </ul>

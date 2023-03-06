@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "events#index"
-
-  resources :users
+  get '/user/:id', to: 'users#show', as: :user
+  resources :user, only: :index
   resources :events do
     member do
       get 'rsvp'

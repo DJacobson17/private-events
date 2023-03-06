@@ -5,4 +5,7 @@ class Event < ApplicationRecord
   has_many :attendees, through: :rsvps, dependent: :destroy
   
   validates :name, :description, :location, :date, presence: true
+
+  scope :past, -> { where('date < ?', Date.today).order(date: :desc) }
+  scope :future, -> { where('date >= ?', Date.today).order(:date) }
 end
