@@ -52,6 +52,7 @@ class EventsController < ApplicationController
   end
 
   def rsvp
+    @event = Event.find(params[:id])
     if @event.attendees.include?(current_user)
       redirect_to @event, notice: "You are already attending this event."
     else
@@ -61,6 +62,7 @@ class EventsController < ApplicationController
   end
 
   def cancel_rsvp
+    @event = Event.find(params[:id])
     @event.attendees.delete(current_user)
     redirect_to @event, notice: "You are no longer going to this event."
   end

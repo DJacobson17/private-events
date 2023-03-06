@@ -1,9 +1,5 @@
 <div class="container">
   <h2><%= @event.name %></h2>
-  
-  <div class="event_info">
-      
-  </div>
 
   <div class="action">
     <% if current_user == @event.creator %>
@@ -34,5 +30,14 @@
   <div>
     <p><%= @event.description %></p>
   </div>
-
+  <div>
+    <p>ATTENDEES</p>
+    <% if @event.attendees.empty? %>
+      <li>This event has no attendees yet</li>
+    <% else %>
+      <% @event.attendees.each do |attendee| %>
+      <li><%= attendee.name %></li>
+    <% end %>
+  <% end %>
+  </div>
 </div>
