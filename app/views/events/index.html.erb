@@ -4,7 +4,8 @@
   <% if @events.empty? %>
     <p>There are no events planned.</p>
   <% else %>
-    <% @events.each do |event| %>
+    <h2>Upcoming Events:</h2>
+    <% @events.future.each do |event| %>
       <div class="card">
         <%= event.name %>
         <%= event.date %>
@@ -13,5 +14,15 @@
       </div>
     <% end %>
       <br>
+    <h2>Past Events:</h2>
+    <% @events.past.each do |event| %>
+      <div class="card">
+        <%= event.name %>
+        <%= event.date %>
+        <%= event.location %>
+        <%= link_to 'Learn More', event_path(event) %>
+      </div>
+    <% end %>
+
   <% end %>
 </div>
